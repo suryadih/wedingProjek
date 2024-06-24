@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>comentar netijen</h3>
+
+    <!-- Form untuk meninggalkan komentar -->
+    <form id="commentForm">
+      <label for="name">Nama:</label><br />
+      <input type="text" id="name" name="name" required /><br />
+      <label for="comment">Komentar:</label><br />
+      <textarea id="comment" name="comment" rows="4" required></textarea><br />
+      <button type="submit">Kirim Komentar</button>
+    </form>
+
+    <hr />
+
+    <!-- Area untuk menampilkan komentar -->
+    <div id="commentSection">
+      <!-- Komentar akan ditampilkan di sini -->
+    </div>
+
+    <script>
+      // Fungsi untuk menangani pengiriman komentar
+      document
+        .getElementById("commentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Mencegah pengiriman form secara default
+          let name = document.getElementById("name").value;
+          let comment = document.getElementById("comment").value;
+
+          // Buat elemen baru untuk menampilkan komentar
+          let commentElement = document.createElement("div");
+          commentElement.innerHTML =
+            "<strong>" + name + "</strong>: " + comment;
+
+          // Tambahkan komentar ke dalam area komentar
+          document.getElementById("commentSection").appendChild(commentElement);
+
+          // Reset form setelah mengirim komentar
+          document.getElementById("commentForm").reset();
+        });
+    </script>
+  </body>
+</html>
